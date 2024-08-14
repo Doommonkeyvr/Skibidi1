@@ -3,206 +3,306 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>By DoomMonkey | Skibidi Doxxing</title>
+    <title>By DoomMonkey | Skibidi DOX</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            color: #fff;
+        }
+        .info-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            flex-grow: 1;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .info-content {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+        }
+        .info-item {
+            flex: 1;
+            box-sizing: border-box;
+            padding: 10px;
+            max-width: 45%;
+        }
+        .info-item:first-of-type {
+            margin-right: 20px;
+        }
+        .info-item:last-of-type {
+            margin-left: 20px;
+            text-align: right;
+        }
+        .video-container {
+            flex: 1;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+        video {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #fff;
+        }
+        p {
+            font-size: 16px;
+            margin: 8px 0;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        strong {
+            display: inline-block;
+            width: 200px;
+        }
+        #start-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 24px;
+            text-align: center;
+            z-index: 1000;
+        }
+    </style>
 </head>
-<body style="margin: 0; padding: 0; background-color: black; overflow: hidden; font-family: Arial, sans-serif; color: red;">
-
-    <div id="start-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: rgba(0, 0, 0, 0.7); color: white; font-size: 24px; cursor: pointer; z-index: 10;">
-        Click anywhere to start Skibidia
-    </div>
-
-    <div id="content" style="display: none; position: relative; width: 100%; height: 100%; box-sizing: border-box; color: white;">
-        <h1 style="margin: 20px 0; font-size: 36px; background: linear-gradient(90deg, red, orange, yellow, lightgreen, blue, indigo, violet); -webkit-background-clip: text; color: transparent; background-size: 200% 200%; animation: rainbowFade 5s infinite;">
-            
-        </h1>
-        <video width="1920" height="850" autoplay loop muted style="border-radius: 20px; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); outline: none;">
-            <source src="https://github.com/Doommonkeyvr/scripthub.github.io/raw/main/skibidi_1.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <audio id="background-audio" loop style="position: absolute; width: 0; height: 0; margin: 0; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); border: none; opacity: 0;">
-            <source src="https://github.com/Doommonkeyvr/scripthub.github.io/raw/main/skibidi_1_1_.mp3" type="audio/mpeg">
-            Your browser does not support the audio tag.
-        </audio>
-
-        <div id="info-section" style="position: absolute; top: 0; width: 100%; display: flex; justify-content: space-between; padding: 20px; box-sizing: border-box; pointer-events: none;">
-            <div id="left-info" style="width: 45%; text-align: left;">
-                <div class="info" id="display-resolution" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
-                    <span class="label" style="font-weight: bold;">Display Resolution:</span>
-                    <span class="value"></span>
-                </div>
-                <div class="info" id="ip-address" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
-                    <span class="label" style="font-weight: bold;">IP Address:</span>
-                    <span class="value"></span>
-                </div>
-                <div class="info" id="location" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
-                    <span class="label" style="font-weight: bold;">Location:</span>
-                    <span class="value"></span>
-                </div>
-                <div class="info" id="country" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
-                    <span class="label" style="font-weight: bold;">Country:</span>
-                    <span class="value"></span>
-                </div>
-                <div class="info" id="zipcode" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
-                    <span class="label" style="font-weight: bold;">Zipcode:</span>
-                    <span class="value"></span>
-                </div>
+<body>
+    <div id="start-screen">Click anywhere to start</div>
+    <h1>System Information</h1>
+    <div class="info-container">
+        <div class="info-content">
+            <div class="info-item" id="left-info">
+                <p id="line1"><strong>Display Resolution:</strong> <span id="display-resolution"></span></p>
+                <p id="line2"><strong>Window Width:</strong> <span id="window-width"></span></p>
+                <p id="line3"><strong>Window Height:</strong> <span id="window-height"></span></p>
+                <p id="line4"><strong>Screen Rotation:</strong> <span id="screen-rotation"></span></p>
+                <p id="line5"><strong>Screen Orientation:</strong> <span id="screen-orientation"></span></p>
+                <p id="line6"><strong>Pixel Depth:</strong> <span id="pixel-depth"></span></p>
+                <p id="line7"><strong>Time Zone:</strong> <span id="time-zone"></span></p>
+                <p id="line8"><strong>User Agent:</strong> <span id="user-agent"></span></p>
+                <p id="line9"><strong>GPU Info:</strong> <span id="gpu-info"></span></p>
+                <p id="line10"><strong>GPU Vendor:</strong> <span id="gpu-vendor"></span></p>
+                <p id="line11"><strong>Available Browser Memory:</strong> <span id="browser-memory"></span></p>
+                <p id="line12"><strong>CPU Threads:</strong> <span id="cpu-threads"></span></p>
+                <p id="line13"><strong>Cursor Location:</strong> <span id="cursor-location"></span></p>
+                <p id="line14"><strong>Hosting Server:</strong> <span id="hosting-server"></span></p>
+                <p id="line15"><strong>Currency:</strong> <span id="currency"></span></p>
+                <p id="line16"><strong>Country Population:</strong> <span id="country-population"></span></p>
             </div>
-            <div id="right-info" style="width: 45%; text-align: right; position: relative; right: 0;">
-                <div class="info" id="latitude" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
-                    <span class="label" style="font-weight: bold;">Latitude:</span>
-                    <span class="value"></span>
-                </div>
-                <div class="info" id="longitude" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
-                    <span class="label" style="font-weight: bold;">Longitude:</span>
-                    <span class="value"></span>
-                </div>
-                <div class="info" id="timezone" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
-                    <span class="label" style="font-weight: bold;">Timezone:</span>
-                    <span class="value"></span>
-                </div>
-                <div class="info" id="pc-specs" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
-                    <span class="label" style="font-weight: bold;">PC Specs:</span>
-                    <span class="value"></span>
-                </div>
-                <div class="info" id="system-language" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
-                    <span class="label" style="font-weight: bold;">System Language:</span>
-                    <span class="value"></span>
-                </div>
-                <div class="info" id="browser" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
-                    <span class="label" style="font-weight: bold;">Browser:</span>
-                    <span class="value"></span>
-                </div>
-                <div class="info" id="current-time" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
-                    <span class="label" style="font-weight: bold;">Current Time:</span>
-                    <span class="value"></span>
-                </div>
-                <div class="info" id="isp" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
-                    <span class="label" style="font-weight: bold;">ISP:</span>
-                    <span class="value"></span>
-                </div>
-                <div class="info" id="organization" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
-                    <span class="label" style="font-weight: bold;">Organization:</span>
-                    <span class="value"></span>
-                </div>
-                <div class="info" id="device-type" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
-                    <span class="label" style="font-weight: bold;">Device Type:</span>
-                    <span class="value"></span>
-                </div>
-                <div class="info" id="gpu-info" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
-                    <span class="label" style="font-weight: bold;"></span>
-                    <span class="value"></span>
-                </div>
-                <div class="info" id="cpu-threads" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
-                    <span class="label" style="font-weight: bold;">CPU Threads:</span>
-                    <span class="value"></span>
-                </div>
-                <div class="info" id="pixel-depth" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
-                    <span class="label" style="font-weight: bold;">Display Pixel Depth:</span>
-                    <span class="value"></span>
-                </div>
-                <div class="info" id="window-width" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
-                    <span class="label" style="font-weight: bold;">Window Width:</span>
-                    <span class="value"></span>
-                </div>
-                <div class="info" id="referrer" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
-                    <span class="label" style="font-weight: bold;">Referrer:</span>
-                    <span class="value"></span>
-                </div>
-                <div class="info" id="cpu-info" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
-                    <span class="label" style="font-weight: bold;">CPU Info:</span>
-                    <span class="value"></span>
-                </div>
+
+            <div class="video-container" id="video-container">
+                <video autoplay loop muted>
+                    <source src="https://github.com/Doommonkeyvr/scripthub.github.io/raw/main/skibidi_1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <div class="info-item" id="right-info">
+                <p id="line17"><strong>Browser Name:</strong> <span id="browser-name"></span></p>
+                <p id="line18"><strong>Browser Version:</strong> <span id="browser-version"></span></p>
+                <p id="line19"><strong>System Language:</strong> <span id="system-language"></span></p>
+                <p id="line20"><strong>Referrer:</strong> <span id="referrer"></span></p>
+                <p id="line21"><strong>Location:</strong> <span id="location"></span></p>
+                <p id="line22"><strong>Region:</strong> <span id="region"></span></p>
+                <p id="line23"><strong>Latitude:</strong> <span id="latitude"></span></p>
+                <p id="line24"><strong>Longitude:</strong> <span id="longitude"></span></p>
+                <p id="line25"><strong>ISP Organization:</strong> <span id="isp-organization"></span></p>
+                <p id="line26"><strong>ZIP Code:</strong> <span id="zip-code"></span></p>
+                <p id="line27"><strong>IPv4:</strong> <span id="ipv4"></span></p>
+                <p id="line28"><strong>IPv6:</strong> <span id="ipv6"></span></p>
+                <p id="line29"><strong>Autonomous System:</strong> <span id="autonomous-system"></span></p>
+                <p id="line30"><strong>Ping:</strong> <span id="ping"></span></p>
+                <p id="line31"><strong>Platform/OS Name:</strong> <span id="platform-os"></span></p>
+                <p id="line32"><strong>Hostname:</strong> <span id="hostname"></span></p>
+                <p id="line33"><strong>Country Area:</strong> <span id="country-area"></span></p>
             </div>
         </div>
+    </div>
+
+    <audio loop id="background-audio" src="https://github.com/Doommonkeyvr/scripthub.github.io/raw/main/skibidi_1_1_.mp3"></audio>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var audio = document.getElementById('background-audio');
-            var overlay = document.getElementById('start-overlay');
-            var content = document.getElementById('content');
-            var infoElements = [
-                'display-resolution', 'ip-address', 'location', 'country', 'zipcode',
-                'latitude', 'longitude', 'timezone', 'ipv6-address', 'pc-specs',
-                'system-language', 'browser', 'current-time', 'isp', 'organization',
-                'device-type', 'gpu-info', 'cpu-threads', 'pixel-depth', 'window-width', 'referrer', 'cpu-info'
-            ];
+        document.addEventListener('DOMContentLoaded', () => {
+            const startScreen = document.getElementById('start-screen');
+            const infoContainer = document.querySelector('.info-container');
+            const videoContainer = document.getElementById('video-container');
+            const audio = document.getElementById('background-audio');
 
-            function playAudio() {
-                var playPromise = audio.play();
-                if (playPromise !== undefined) {
-                    playPromise.then(function() {
-                        // Audio started successfully
-                        console.log('Audio started successfully.');
-                        overlay.style.display = 'none'; // Hide the overlay
-                        content.style.display = 'block'; // Show the content
-                        initializeInfo(); // Start displaying the info
-                    }).catch(function(error) {
-                        // Handle errors (e.g., user might have blocked autoplay)
-                        console.log('Audio playback failed: ', error);
-                    });
-                }
+            // Function to display text line by line
+            const showLines = () => {
+                const lines = Array.from(document.querySelectorAll('.info-item p'));
+                let currentLine = 0;
+
+                const showNextLine = () => {
+                    if (currentLine < lines.length) {
+                        lines[currentLine].style.opacity = 1;
+                        currentLine++;
+                        setTimeout(showNextLine, 1000); // Show next line after 1 second
+                    }
+                };
+
+                showNextLine();
+            };
+
+            // Event listener for start screen click
+            startScreen.addEventListener('click', () => {
+                startScreen.style.display = 'none'; // Hide start screen
+                infoContainer.style.opacity = 1; // Show info container
+                videoContainer.style.display = 'flex'; // Show video container
+                audio.play(); // Play audio
+                showLines(); // Start displaying lines
+            });
+
+            // Display resolution
+            document.getElementById('display-resolution').textContent = `${window.screen.width}x${window.screen.height}`;
+
+            // Window Width and Height
+            document.getElementById('window-width').textContent = window.innerWidth;
+            document.getElementById('window-height').textContent = window.innerHeight;
+
+            // Screen rotation and orientation
+            const orientation = screen.orientation ? screen.orientation.type : 'unknown';
+            document.getElementById('screen-orientation').textContent = orientation;
+            const rotation = screen.orientation ? `${screen.orientation.angle}°` : 'unknown';
+            document.getElementById('screen-rotation').textContent = rotation;
+
+            // Pixel depth
+            document.getElementById('pixel-depth').textContent = window.screen.pixelDepth || 'unknown';
+
+            // Time Zone
+            document.getElementById('time-zone').textContent = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+            // User Agent
+            document.getElementById('user-agent').textContent = navigator.userAgent;
+
+            // Browser Name and Version
+            const userAgent = navigator.userAgent;
+            let browserName, browserVersion;
+            if (userAgent.indexOf('Firefox') > -1) {
+                browserName = 'Mozilla Firefox';
+                browserVersion = userAgent.match(/Firefox\/([\d\.]+)/)[1];
+            } else if (userAgent.indexOf('SamsungBrowser') > -1) {
+                browserName = 'Samsung Internet';
+                browserVersion = userAgent.match(/SamsungBrowser\/([\d\.]+)/)[1];
+            } else if (userAgent.indexOf('Chrome') > -1) {
+                browserName = 'Google Chrome';
+                browserVersion = userAgent.match(/Chrome\/([\d\.]+)/)[1];
+            } else if (userAgent.indexOf('Safari') > -1) {
+                browserName = 'Safari';
+                browserVersion = userAgent.match(/Version\/([\d\.]+)/)[1];
+            } else if (userAgent.indexOf('Trident/') > -1) {
+                browserName = 'Internet Explorer';
+                browserVersion = userAgent.match(/rv:([\d\.]+)/)[1];
+            } else {
+                browserName = 'Unknown';
+                browserVersion = 'Unknown';
             }
+            document.getElementById('browser-name').textContent = browserName;
+            document.getElementById('browser-version').textContent = browserVersion;
 
-            async function displayResolution() {
-                const { innerWidth: width, innerHeight: height } = window;
-                document.getElementById('display-resolution').querySelector('.value').textContent = `${width} x ${height}`;
-            }
+            // WebGL GPU Info
+            const canvas = document.createElement('canvas');
+            const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+            const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+            const gpuInfo = debugInfo ? gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL) : 'Unavailable';
+            const gpuVendor = debugInfo ? gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL) : 'Unavailable';
+            document.getElementById('gpu-info').textContent = gpuInfo;
+            document.getElementById('gpu-vendor').textContent = gpuVendor;
 
-            async function fetchNetworkInfo() {
+            // Browser Memory
+            const memory = navigator.deviceMemory || 'Unavailable';
+            document.getElementById('browser-memory').textContent = `${memory} GB`;
+
+            // CPU Threads
+            const cpuThreads = navigator.hardwareConcurrency || 'Unavailable';
+            document.getElementById('cpu-threads').textContent = cpuThreads;
+
+            // Platform/OS
+            document.getElementById('platform-os').textContent = navigator.platform;
+
+            // System Language
+            document.getElementById('system-language').textContent = navigator.language || 'Unavailable';
+
+            // Referrer
+            document.getElementById('referrer').textContent = document.referrer || 'None';
+
+            // Cursor Location
+            const updateCursorLocation = (event) => {
+                document.getElementById('cursor-location').textContent = `X: ${event.clientX}, Y: ${event.clientY}`;
+            };
+            document.addEventListener('mousemove', updateCursorLocation);
+
+            // Fetch IP Information
+            const fetchIPInfo = async () => {
                 try {
-                    const ipResponse = await fetch('https://api.ipify.org?format=json');
-                    const ipData = await ipResponse.json();
-                    document.getElementById('ip-address').querySelector('.value').textContent = ipData.ip;
-
-                    const locationResponse = await fetch(`https://ipinfo.io/${ipData.ip}/json`);
-                    const locationData = await locationResponse.json();
-                    document.getElementById('location').querySelector('.value').textContent = locationData.city || 'Not available';
-                    document.getElementById('country').querySelector('.value').textContent = locationData.country || 'Not available';
-                    document.getElementById('zipcode').querySelector('.value').textContent = locationData.postal || 'Not available';
-                    document.getElementById('latitude').querySelector('.value').textContent = locationData.loc ? locationData.loc.split(',')[0] : 'Not available';
-                    document.getElementById('longitude').querySelector('.value').textContent = locationData.loc ? locationData.loc.split(',')[1] : 'Not available';
-                    document.getElementById('timezone').querySelector('.value').textContent = locationData.timezone || 'Not available';
-                    document.getElementById('ipv6-address').querySelector('.value').textContent = locationData.ipv6 || 'Not available';
-
+                    const response = await fetch('https://ipapi.co/json/');
+                    const data = await response.json();
+                    document.getElementById('location').textContent = `${data.city}, ${data.region}, ${data.country_name}`;
+                    document.getElementById('region').textContent = data.region;
+                    document.getElementById('latitude').textContent = data.latitude;
+                    document.getElementById('longitude').textContent = data.longitude;
+                    document.getElementById('isp-organization').textContent = data.org;
+                    document.getElementById('zip-code').textContent = data.postal;
+                    document.getElementById('ipv4').textContent = data.ip;
+                    document.getElementById('ipv6').textContent = data.ipv6 || 'Unavailable';
+                    document.getElementById('currency').textContent = data.currency || 'Unavailable';
+                    document.getElementById('autonomous-system').textContent = `AS${data.asn} (${data.org})`;
+                    document.getElementById('country-area').textContent = data.country_area || 'Unavailable';
+                    document.getElementById('country-population').textContent = data.country_population || 'Unavailable';
+                    document.getElementById('hosting-server').textContent = 'No';
                 } catch (error) {
-                    console.log('Error fetching network info:', error);
+                    console.error('Error fetching IP information:', error);
                 }
-            }
+            };
+            fetchIPInfo();
 
-            function getSystemInfo() {
-                document.getElementById('pc-specs').querySelector('.value').textContent = navigator.platform || 'Not available';
-                document.getElementById('system-language').querySelector('.value').textContent = navigator.language || 'Not available';
-                document.getElementById('browser').querySelector('.value').textContent = navigator.userAgent || 'Not available';
-                document.getElementById('current-time').querySelector('.value').textContent = new Date().toLocaleString() || 'Not available';
-                document.getElementById('isp').querySelector('.value').textContent = 'Not available';
-                document.getElementById('organization').querySelector('.value').textContent = 'Not available';
-                document.getElementById('device-type').querySelector('.value').textContent = /Mobi|Android/i.test(navigator.userAgent) ? 'Mobile/Tablet' : 'Desktop';
-                
-                // GPU Info (basic)
-                document.getElementById('gpu-info').querySelector('.value').textContent = navigator.hardwareConcurrency ? `CPU Cores: ${navigator.hardwareConcurrency}` : 'Not available';
-                document.getElementById('cpu-threads').querySelector('.value').textContent = navigator.hardwareConcurrency || 'Not available';
-                document.getElementById('pixel-depth').querySelector('.value').textContent = window.screen.colorDepth || 'Not available';
-                document.getElementById('window-width').querySelector('.value').textContent = window.innerWidth || 'Not available';
-                document.getElementById('referrer').querySelector('.value').textContent = document.referrer || 'Not available';
-                document.getElementById('cpu-info').querySelector('.value').textContent = 'Not available'; // Requires more detailed system info
-            }
+            // Fetch Hostname
+            const fetchHostname = async () => {
+                try {
+                    const response = await fetch('https://ipinfo.io/json');
+                    const data = await response.json();
+                    document.getElementById('hostname').textContent = data.hostname || 'Unavailable';
+                } catch (error) {
+                    console.error('Error fetching hostname:', error);
+                }
+            };
+            fetchHostname();
 
-            function initializeInfo() {
-                displayResolution();
-                fetchNetworkInfo();
-                getSystemInfo();
-                // Show each piece of information with a delay
-                infoElements.forEach((id, index) => {
-                    setTimeout(() => {
-                        document.getElementById(id).style.display = 'block';
-                    }, index * 500);
+            // Ping Test
+            const pingTest = new Date().getTime();
+            fetch('https://ipapi.co/json/')
+                .then(() => {
+                    const pingTime = new Date().getTime() - pingTest;
+                    document.getElementById('ping').textContent = `${pingTime} ms`;
+                })
+                .catch(error => {
+                    console.error('Error measuring ping:', error);
                 });
-            }
-
-            // Add event listener for user interaction to play audio and show content
-            overlay.addEventListener('click', playAudio);
         });
     </script>
-
 </body>
 </html>
