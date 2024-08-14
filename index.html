@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>By DoomMonkey | Skibidi Doxxing</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: black; overflow: hidden; font-family: Arial, sans-serif; color: red;">
+
+    <div id="start-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: rgba(0, 0, 0, 0.7); color: white; font-size: 24px; cursor: pointer; z-index: 10;">
+        Click anywhere to start Skibidia
+    </div>
+
+    <div id="content" style="display: none; position: relative; width: 100%; height: 100%; box-sizing: border-box; color: white;">
+        <h1 style="margin: 20px 0; font-size: 36px; background: linear-gradient(90deg, red, orange, yellow, lightgreen, blue, indigo, violet); -webkit-background-clip: text; color: transparent; background-size: 200% 200%; animation: rainbowFade 5s infinite;">
+            
+        </h1>
+        <video width="1920" height="850" autoplay loop muted style="border-radius: 20px; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); outline: none;">
+            <source src="https://github.com/Doommonkeyvr/scripthub.github.io/raw/main/skibidi_1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <audio id="background-audio" loop style="position: absolute; width: 0; height: 0; margin: 0; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); border: none; opacity: 0;">
+            <source src="https://github.com/Doommonkeyvr/scripthub.github.io/raw/main/skibidi_1_1_.mp3" type="audio/mpeg">
+            Your browser does not support the audio tag.
+        </audio>
+
+        <div id="info-section" style="position: absolute; top: 0; width: 100%; display: flex; justify-content: space-between; padding: 20px; box-sizing: border-box; pointer-events: none;">
+            <div id="left-info" style="width: 45%; text-align: left;">
+                <div class="info" id="display-resolution" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
+                    <span class="label" style="font-weight: bold;">Display Resolution:</span>
+                    <span class="value"></span>
+                </div>
+                <div class="info" id="ip-address" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
+                    <span class="label" style="font-weight: bold;">IP Address:</span>
+                    <span class="value"></span>
+                </div>
+                <div class="info" id="location" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
+                    <span class="label" style="font-weight: bold;">Location:</span>
+                    <span class="value"></span>
+                </div>
+                <div class="info" id="country" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
+                    <span class="label" style="font-weight: bold;">Country:</span>
+                    <span class="value"></span>
+                </div>
+                <div class="info" id="zipcode" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
+                    <span class="label" style="font-weight: bold;">Zipcode:</span>
+                    <span class="value"></span>
+                </div>
+            </div>
+            <div id="right-info" style="width: 45%; text-align: right; position: relative; right: 0;">
+                <div class="info" id="latitude" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
+                    <span class="label" style="font-weight: bold;">Latitude:</span>
+                    <span class="value"></span>
+                </div>
+                <div class="info" id="longitude" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
+                    <span class="label" style="font-weight: bold;">Longitude:</span>
+                    <span class="value"></span>
+                </div>
+                <div class="info" id="timezone" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
+                    <span class="label" style="font-weight: bold;">Timezone:</span>
+                    <span class="value"></span>
+                </div>
+                <div class="info" id="pc-specs" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
+                    <span class="label" style="font-weight: bold;">PC Specs:</span>
+                    <span class="value"></span>
+                </div>
+                <div class="info" id="system-language" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
+                    <span class="label" style="font-weight: bold;">System Language:</span>
+                    <span class="value"></span>
+                </div>
+                <div class="info" id="browser" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
+                    <span class="label" style="font-weight: bold;">Browser:</span>
+                    <span class="value"></span>
+                </div>
+                <div class="info" id="current-time" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
+                    <span class="label" style="font-weight: bold;">Current Time:</span>
+                    <span class="value"></span>
+                </div>
+                <div class="info" id="isp" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
+                    <span class="label" style="font-weight: bold;">ISP:</span>
+                    <span class="value"></span>
+                </div>
+                <div class="info" id="organization" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
+                    <span class="label" style="font-weight: bold;">Organization:</span>
+                    <span class="value"></span>
+                </div>
+                <div class="info" id="device-type" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
+                    <span class="label" style="font-weight: bold;">Device Type:</span>
+                    <span class="value"></span>
+                </div>
+                <div class="info" id="gpu-info" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
+                    <span class="label" style="font-weight: bold;"></span>
+                    <span class="value"></span>
+                </div>
+                <div class="info" id="cpu-threads" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
+                    <span class="label" style="font-weight: bold;">CPU Threads:</span>
+                    <span class="value"></span>
+                </div>
+                <div class="info" id="pixel-depth" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
+                    <span class="label" style="font-weight: bold;">Display Pixel Depth:</span>
+                    <span class="value"></span>
+                </div>
+                <div class="info" id="window-width" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
+                    <span class="label" style="font-weight: bold;">Window Width:</span>
+                    <span class="value"></span>
+                </div>
+                <div class="info" id="referrer" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
+                    <span class="label" style="font-weight: bold;">Referrer:</span>
+                    <span class="value"></span>
+                </div>
+                <div class="info" id="cpu-info" style="display: none; background-color: rgba(0, 0, 0, 0); padding: 10px; border-radius: 8px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); margin-bottom: 10px;">
+                    <span class="label" style="font-weight: bold;">CPU Info:</span>
+                    <span class="value"></span>
+                </div>
+            </div>
+        </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var audio = document.getElementById('background-audio');
+            var overlay = document.getElementById('start-overlay');
+            var content = document.getElementById('content');
+            var infoElements = [
+                'display-resolution', 'ip-address', 'location', 'country', 'zipcode',
+                'latitude', 'longitude', 'timezone', 'ipv6-address', 'pc-specs',
+                'system-language', 'browser', 'current-time', 'isp', 'organization',
+                'device-type', 'gpu-info', 'cpu-threads', 'pixel-depth', 'window-width', 'referrer', 'cpu-info'
+            ];
+
+            function playAudio() {
+                var playPromise = audio.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(function() {
+                        // Audio started successfully
+                        console.log('Audio started successfully.');
+                        overlay.style.display = 'none'; // Hide the overlay
+                        content.style.display = 'block'; // Show the content
+                        initializeInfo(); // Start displaying the info
+                    }).catch(function(error) {
+                        // Handle errors (e.g., user might have blocked autoplay)
+                        console.log('Audio playback failed: ', error);
+                    });
+                }
+            }
+
+            async function displayResolution() {
+                const { innerWidth: width, innerHeight: height } = window;
+                document.getElementById('display-resolution').querySelector('.value').textContent = `${width} x ${height}`;
+            }
+
+            async function fetchNetworkInfo() {
+                try {
+                    const ipResponse = await fetch('https://api.ipify.org?format=json');
+                    const ipData = await ipResponse.json();
+                    document.getElementById('ip-address').querySelector('.value').textContent = ipData.ip;
+
+                    const locationResponse = await fetch(`https://ipinfo.io/${ipData.ip}/json`);
+                    const locationData = await locationResponse.json();
+                    document.getElementById('location').querySelector('.value').textContent = locationData.city || 'Not available';
+                    document.getElementById('country').querySelector('.value').textContent = locationData.country || 'Not available';
+                    document.getElementById('zipcode').querySelector('.value').textContent = locationData.postal || 'Not available';
+                    document.getElementById('latitude').querySelector('.value').textContent = locationData.loc ? locationData.loc.split(',')[0] : 'Not available';
+                    document.getElementById('longitude').querySelector('.value').textContent = locationData.loc ? locationData.loc.split(',')[1] : 'Not available';
+                    document.getElementById('timezone').querySelector('.value').textContent = locationData.timezone || 'Not available';
+                    document.getElementById('ipv6-address').querySelector('.value').textContent = locationData.ipv6 || 'Not available';
+
+                } catch (error) {
+                    console.log('Error fetching network info:', error);
+                }
+            }
+
+            function getSystemInfo() {
+                document.getElementById('pc-specs').querySelector('.value').textContent = navigator.platform || 'Not available';
+                document.getElementById('system-language').querySelector('.value').textContent = navigator.language || 'Not available';
+                document.getElementById('browser').querySelector('.value').textContent = navigator.userAgent || 'Not available';
+                document.getElementById('current-time').querySelector('.value').textContent = new Date().toLocaleString() || 'Not available';
+                document.getElementById('isp').querySelector('.value').textContent = 'Not available';
+                document.getElementById('organization').querySelector('.value').textContent = 'Not available';
+                document.getElementById('device-type').querySelector('.value').textContent = /Mobi|Android/i.test(navigator.userAgent) ? 'Mobile/Tablet' : 'Desktop';
+                
+                // GPU Info (basic)
+                document.getElementById('gpu-info').querySelector('.value').textContent = navigator.hardwareConcurrency ? `CPU Cores: ${navigator.hardwareConcurrency}` : 'Not available';
+                document.getElementById('cpu-threads').querySelector('.value').textContent = navigator.hardwareConcurrency || 'Not available';
+                document.getElementById('pixel-depth').querySelector('.value').textContent = window.screen.colorDepth || 'Not available';
+                document.getElementById('window-width').querySelector('.value').textContent = window.innerWidth || 'Not available';
+                document.getElementById('referrer').querySelector('.value').textContent = document.referrer || 'Not available';
+                document.getElementById('cpu-info').querySelector('.value').textContent = 'Not available'; // Requires more detailed system info
+            }
+
+            function initializeInfo() {
+                displayResolution();
+                fetchNetworkInfo();
+                getSystemInfo();
+                // Show each piece of information with a delay
+                infoElements.forEach((id, index) => {
+                    setTimeout(() => {
+                        document.getElementById(id).style.display = 'block';
+                    }, index * 500);
+                });
+            }
+
+            // Add event listener for user interaction to play audio and show content
+            overlay.addEventListener('click', playAudio);
+        });
+    </script>
+
+</body>
+</html>
